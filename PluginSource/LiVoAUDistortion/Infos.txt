@@ -1,0 +1,4 @@
+"Clone" do plugin AUDistortion que vem embutido no sistema OSx da Apple como exercício da Oficina de Live Electronics com Alexandre Porres.
+Version: 0.1
+Author: Esteban Viveros
+2021-07-30

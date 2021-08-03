@@ -1,0 +1,208 @@
+#N canvas 145 69 1073 636 10;
+#X declare -path else;
+#X obj 935 21 declare -path else;
+#N canvas 0 22 622 441 ring_mod 0;
+#X obj 45 20 inlet~;
+#X obj 54 399 outlet~;
+#X obj 86 208 rm~;
+#X floatatom 253 149 5 0.5 8000 1 Hz - -;
+#X obj 256 132 hsl 60 15 0.5 8000 0 0 empty \$0-freq_1_rcv freq_1 11
+8 0 10 -262144 -1 -1 3255 1;
+#X obj 170 199 rm~;
+#X floatatom 396 149 5 0.5 8000 1 Hz - -;
+#X obj 399 132 hsl 60 15 0.5 8000 0 0 empty \$0-freq_2_rcv freq_2 11
+8 0 10 -262144 -1 -1 5900 1;
+#X floatatom 325 151 5 0 100 1 % - -;
+#X obj 328 132 hsl 60 15 0 100 0 1 empty \$0-balance_rcv balance 8
+8 0 10 -262144 -1 -1 5600 1;
+#X obj 112 287 xfade~;
+#X obj 325 225 f2s~;
+#X obj 90 236 *~ 0.25;
+#X obj 170 228 *~ 0.25;
+#X floatatom 475 151 5 0 0 1 % - -;
+#X obj 478 132 hsl 60 15 0 100 0 1 empty \$0-Mix_ring_mod_rcv Mix 21
+8 0 10 -262144 -1 -1 2500 1;
+#X obj 475 205 f2s~;
+#X obj 55 337 xfade~;
+#X obj 325 185 rescale 0 100 -1 1;
+#X obj 475 180 rescale 0 100 -1 1;
+#X obj 45 266 *~ 0.5;
+#X connect 0 0 2 0;
+#X connect 0 0 5 0;
+#X connect 0 0 20 0;
+#X connect 2 0 12 0;
+#X connect 3 0 2 1;
+#X connect 4 0 3 0;
+#X connect 5 0 13 0;
+#X connect 6 0 5 1;
+#X connect 7 0 6 0;
+#X connect 8 0 18 0;
+#X connect 9 0 8 0;
+#X connect 10 0 17 1;
+#X connect 11 0 10 2;
+#X connect 12 0 10 0;
+#X connect 13 0 10 1;
+#X connect 14 0 19 0;
+#X connect 15 0 14 0;
+#X connect 16 0 17 2;
+#X connect 17 0 1 0;
+#X connect 18 0 11 0;
+#X connect 19 0 16 0;
+#X connect 20 0 17 0;
+#X coords 0 -1 1 1 320 75 1 240 100;
+#X restore 49 195 pd ring_mod;
+#X obj 496 297 lb;
+#X obj 496 335 f \$0;
+#N canvas 9 276 450 340 decimator 0;
+#X obj 26 17 inlet~;
+#X obj 47 282 outlet~;
+#X obj 125 146 crusher~;
+#X floatatom 170 80 5 0 100 1 % - -;
+#X obj 173 61 hsl 60 15 0.5 100 0 1 empty \$0-decimation_rcv decimation
+0 8 0 10 -262144 -1 -1 2400 1;
+#X floatatom 241 79 5 0 100 1 % - -;
+#X obj 244 60 hsl 60 15 0.5 100 0 1 empty \$0-rounding_rcv rounding
+6 8 0 10 -262144 -1 -1 1800 1;
+#X floatatom 313 79 5 0 0 1 % - -;
+#X obj 316 60 hsl 60 15 0 100 0 1 empty \$0-Mix_decimator_rcv Mix 21
+8 0 10 -262144 -1 -1 2533 1;
+#X obj 313 133 f2s~;
+#X obj 56 237 xfade~;
+#X obj 313 108 rescale 0 100 -1 1;
+#X obj 56 166 *~ 0.5;
+#X obj 125 166 *~ 0.5;
+#X connect 0 0 2 0;
+#X connect 0 0 12 0;
+#X connect 2 0 13 0;
+#X connect 3 0 2 2;
+#X connect 4 0 3 0;
+#X connect 5 0 2 1;
+#X connect 6 0 5 0;
+#X connect 7 0 11 0;
+#X connect 8 0 7 0;
+#X connect 9 0 10 2;
+#X connect 10 0 1 0;
+#X connect 11 0 9 0;
+#X connect 12 0 10 0;
+#X connect 13 0 10 1;
+#X coords 0 -1 1 1 240 75 1 155 30;
+#X restore 49 287 pd decimator;
+#N canvas 97 31 450 385 delay 0;
+#X floatatom 170 80 5 0.1 500 1 msecs - -;
+#X obj 173 61 hsl 60 15 0.1 500 0 1 empty \$0-delay_rcv delay 14 8
+0 10 -262144 -1 -1 2099 1;
+#X floatatom 241 79 5 0 100 1 - - -;
+#X obj 244 60 hsl 60 15 0.1 50 0 1 empty \$0-decay_rcv decay 14 8 0
+10 -262144 -1 -1 3999 1;
+#X floatatom 313 79 5 0 0 1 % - -;
+#X obj 316 60 hsl 60 15 0 100 0 1 empty \$0-Mix_delay_rcv Mix 21 8
+0 10 -262144 -1 -1 2400 1;
+#X obj 313 133 f2s~;
+#X obj 56 237 xfade~;
+#X obj 313 108 rescale 0 100 -1 1;
+#X obj 22 23 inlet~;
+#X obj 24 317 outlet~;
+#X obj 92 182 fbdelay~;
+#X obj 241 120 * 44;
+#X text 212 225 decay máx: 2200 ms;
+#X connect 0 0 11 1;
+#X connect 1 0 0 0;
+#X connect 2 0 12 0;
+#X connect 3 0 2 0;
+#X connect 4 0 8 0;
+#X connect 5 0 4 0;
+#X connect 6 0 7 2;
+#X connect 7 0 10 0;
+#X connect 8 0 6 0;
+#X connect 9 0 7 0;
+#X connect 9 0 11 0;
+#X connect 11 0 7 1;
+#X connect 12 0 11 2;
+#X coords 0 -1 1 1 240 75 1 155 30;
+#X restore 49 97 pd delay;
+#X msg 496 489 \; \$1-delay_rcv 203.4 \; \$1-decay_rcv 46.61 \; \$1-Mix_delay_rcv
+55.93 \;;
+#X msg 510 358 \; \$1-decimation_rcv 0.05 \; \$1-rounding_rcv 0.14
+\; \$1-Mix_decimator_rcv 5.644 \;;
+#X msg 503 414 \; \$1-freq_1_rcv 75.07 \; \$1-balance_rcv 42.37 \;
+\$1-freq_2_rcv 1085 \; \$1-Mix_ring_mod_rcv 100 \;;
+#X obj 30 42 inlet~;
+#X obj 30 431 outlet~;
+#X obj 408 191 savestate;
+#X msg 459 214 export;
+#X obj 302 99 hradio 17 1 0 4 empty \$0-radio Load\ preset 2 -10 0
+10 -174763 -1 -1 1;
+#N canvas 356 221 694 431 shift 1;
+#X msg 137 214 save;
+#X msg 218 214 load;
+#X obj 106 264 else/insert;
+#X obj 218 293 s \$0-radio;
+#X obj 175 95 keyname;
+#X obj 214 117 select Shift_L;
+#X msg 214 139 1;
+#X msg 295 138 0;
+#X obj 199 166 &&;
+#X obj 199 188 sel 1 0;
+#X obj 106 35 inlet;
+#X obj 106 344 outlet;
+#X msg 218 242 color #aaaaaa #000000 #000000 \, label Load\ preset
+;
+#X msg 227 270 color #ff5050 #000000 #000000 \, label Save\ preset
+;
+#X connect 0 0 2 1;
+#X connect 0 0 13 0;
+#X connect 1 0 2 1;
+#X connect 1 0 12 0;
+#X connect 2 0 11 0;
+#X connect 4 0 8 0;
+#X connect 4 1 5 0;
+#X connect 5 0 6 0;
+#X connect 5 1 7 0;
+#X connect 6 0 8 1;
+#X connect 7 0 8 1;
+#X connect 8 0 9 0;
+#X connect 9 0 0 0;
+#X connect 9 1 1 0;
+#X connect 10 0 2 0;
+#X connect 12 0 3 0;
+#X connect 13 0 3 0;
+#X restore 423 158 pd shift;
+#X obj 459 240 else/presets \\\$0-delay_rcv \\\$0-decay_rcv \\\$0-Mix_delay_rcv
+\\\$0-freq_1_rcv \\\$0-balance_rcv \\\$0-freq_2_rcv \\\$0-Mix_ring_mod_rcv
+\\\$0-decimation_rcv \\\$0-rounding_rcv \\\$0-Mix_decimator_rcv, f
+66;
+#A saved \\\$0-delay_rcv 203.4 || \\\$0-decay_rcv 46.61 || \\\$0-Mix_delay_rcv
+55.93 || \\\$0-freq_1_rcv 75.07 || \\\$0-balance_rcv 42.37 || \\\$0-freq_2_rcv
+1085 || \\\$0-Mix_ring_mod_rcv 100 || \\\$0-decimation_rcv 0.05 ||
+\\\$0-rounding_rcv 0.14 || \\\$0-Mix_decimator_rcv 5.644 || \; \\\$0-delay_rcv
+169.558 || \\\$0-decay_rcv 33.0847 || \\\$0-Mix_delay_rcv 40.678 ||
+\\\$0-freq_1_rcv 4339.21 || \\\$0-balance_rcv 94.9153 || \\\$0-freq_2_rcv
+8000 || \\\$0-Mix_ring_mod_rcv 42.3729 || \\\$0-decimation_rcv 40.9746
+|| \\\$0-rounding_rcv 30.8559 || \\\$0-Mix_decimator_rcv 42.3729 ||
+\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
+-empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty-
+\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
+-empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty-
+\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
+-empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty-
+\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
+-empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty-
+\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
+-empty- \; -empty- \; -empty- \; -empty- \;;
+#X msg 525 213 open;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 8 0;
+#X connect 3 0 6 0;
+#X connect 3 0 7 0;
+#X connect 4 0 10 0;
+#X connect 5 0 1 0;
+#X connect 9 0 5 0;
+#X connect 11 0 15 0;
+#X connect 11 1 12 0;
+#X connect 12 0 15 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 11 0;
+#X connect 16 0 15 0;
+#X coords 0 -1 1 1 350 300 1 35 70;
