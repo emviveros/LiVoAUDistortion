@@ -7,21 +7,21 @@
 #X obj 86 208 rm~;
 #X floatatom 253 149 5 0.5 8000 1 Hz - -;
 #X obj 256 132 hsl 60 15 0.5 8000 0 0 empty \$0-freq_1_rcv freq_1 11
-8 0 10 -262144 -1 -1 3255 1;
+8 0 10 -262144 -1 -1 55 1;
 #X obj 170 199 rm~;
 #X floatatom 396 149 5 0.5 8000 1 Hz - -;
 #X obj 399 132 hsl 60 15 0.5 8000 0 0 empty \$0-freq_2_rcv freq_2 11
-8 0 10 -262144 -1 -1 5900 1;
+8 0 10 -262144 -1 -1 800 1;
 #X floatatom 325 151 5 0 100 1 % - -;
 #X obj 328 132 hsl 60 15 0 100 0 1 empty \$0-balance_rcv balance 8
-8 0 10 -262144 -1 -1 5600 1;
+8 0 10 -262144 -1 -1 2500 1;
 #X obj 112 287 xfade~;
 #X obj 325 225 f2s~;
 #X obj 90 236 *~ 0.25;
 #X obj 170 228 *~ 0.25;
 #X floatatom 475 151 5 0 0 1 % - -;
 #X obj 478 132 hsl 60 15 0 100 0 1 empty \$0-Mix_ring_mod_rcv Mix 21
-8 0 10 -262144 -1 -1 2500 1;
+8 0 10 -262144 -1 -1 5900 1;
 #X obj 475 205 f2s~;
 #X obj 55 337 xfade~;
 #X obj 325 185 rescale 0 100 -1 1;
@@ -59,13 +59,13 @@
 #X obj 125 146 crusher~;
 #X floatatom 170 80 5 0 100 1 % - -;
 #X obj 173 61 hsl 60 15 0.5 100 0 1 empty \$0-decimation_rcv decimation
-0 8 0 10 -262144 -1 -1 2400 1;
+0 8 0 10 -262144 -1 -1 0 1;
 #X floatatom 241 79 5 0 100 1 % - -;
 #X obj 244 60 hsl 60 15 0.5 100 0 1 empty \$0-rounding_rcv rounding
-6 8 0 10 -262144 -1 -1 1800 1;
+6 8 0 10 -262144 -1 -1 0 1;
 #X floatatom 313 79 5 0 0 1 % - -;
 #X obj 316 60 hsl 60 15 0 100 0 1 empty \$0-Mix_decimator_rcv Mix 21
-8 0 10 -262144 -1 -1 2533 1;
+8 0 10 -262144 -1 -1 333 1;
 #X obj 313 133 f2s~;
 #X obj 56 237 xfade~;
 #X obj 313 108 rescale 0 100 -1 1;
@@ -90,13 +90,13 @@
 #N canvas 97 31 450 385 delay 0;
 #X floatatom 170 80 5 0.1 500 1 msecs - -;
 #X obj 173 61 hsl 60 15 0.1 500 0 1 empty \$0-delay_rcv delay 14 8
-0 10 -262144 -1 -1 2099 1;
+0 10 -262144 -1 -1 2399 1;
 #X floatatom 241 79 5 0 100 1 - - -;
 #X obj 244 60 hsl 60 15 0.1 50 0 1 empty \$0-decay_rcv decay 14 8 0
-10 -262144 -1 -1 3999 1;
+10 -262144 -1 -1 5499 1;
 #X floatatom 313 79 5 0 0 1 % - -;
 #X obj 316 60 hsl 60 15 0 100 0 1 empty \$0-Mix_delay_rcv Mix 21 8
-0 10 -262144 -1 -1 2400 1;
+0 10 -262144 -1 -1 3300 1;
 #X obj 313 133 f2s~;
 #X obj 56 237 xfade~;
 #X obj 313 108 rescale 0 100 -1 1;
@@ -132,7 +132,7 @@
 #X msg 459 214 export;
 #X obj 302 99 hradio 17 1 0 4 empty \$0-radio Load\ preset 2 -10 0
 10 -174763 -1 -1 1;
-#N canvas 356 221 694 431 shift 1;
+#N canvas 356 221 694 431 shift 0;
 #X msg 137 214 save;
 #X msg 218 214 load;
 #X obj 106 264 else/insert;
