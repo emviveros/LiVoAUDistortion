@@ -209,78 +209,6 @@
 #X connect 16 0 4 0;
 #X coords 0 -1 1 1 240 75 1 155 30;
 #X restore 49 97 pd delay;
-#X obj 302 99 hradio 17 1 0 4 empty \$0-radio Load\ preset 2 -10 0
-10 -174763 -1 -1 1;
-#N canvas 23 32 552 334 preset 0;
-#X obj 50 112 savestate;
-#X msg 101 135 export;
-#N canvas 356 221 694 431 shift 0;
-#X msg 137 214 save;
-#X msg 218 214 load;
-#X obj 106 264 else/insert;
-#X obj 218 293 s \$0-radio;
-#X obj 175 95 keyname;
-#X obj 214 117 select Shift_L;
-#X msg 214 139 1;
-#X msg 295 138 0;
-#X obj 199 166 &&;
-#X obj 199 188 sel 1 0;
-#X obj 106 35 inlet;
-#X obj 106 344 outlet;
-#X msg 218 242 color #aaaaaa #000000 #000000 \, label Load\ preset
-;
-#X msg 227 270 color #ff5050 #000000 #000000 \, label Save\ preset
-;
-#X connect 0 0 2 1;
-#X connect 0 0 13 0;
-#X connect 1 0 2 1;
-#X connect 1 0 12 0;
-#X connect 2 0 11 0;
-#X connect 4 0 8 0;
-#X connect 4 1 5 0;
-#X connect 5 0 6 0;
-#X connect 5 1 7 0;
-#X connect 6 0 8 1;
-#X connect 7 0 8 1;
-#X connect 8 0 9 0;
-#X connect 9 0 0 0;
-#X connect 9 1 1 0;
-#X connect 10 0 2 0;
-#X connect 12 0 3 0;
-#X connect 13 0 3 0;
-#X restore 65 79 pd shift;
-#X obj 101 161 else/presets \\\$0-delay_rcv \\\$0-decay_rcv \\\$0-Mix_delay_rcv
-\\\$0-freq_1_rcv \\\$0-balance_rcv \\\$0-freq_2_rcv \\\$0-Mix_ring_mod_rcv
-\\\$0-decimation_rcv \\\$0-rounding_rcv \\\$0-Mix_decimator_rcv, f
-66;
-#A saved \\\$0-delay_rcv 203.4 || \\\$0-decay_rcv 46.61 || \\\$0-Mix_delay_rcv
-55.93 || \\\$0-freq_1_rcv 75.07 || \\\$0-balance_rcv 42.37 || \\\$0-freq_2_rcv
-1085 || \\\$0-Mix_ring_mod_rcv 100 || \\\$0-decimation_rcv 0.05 ||
-\\\$0-rounding_rcv 0.14 || \\\$0-Mix_decimator_rcv 5.644 || \; \\\$0-delay_rcv
-169.558 || \\\$0-decay_rcv 33.0847 || \\\$0-Mix_delay_rcv 40.678 ||
-\\\$0-freq_1_rcv 4339.21 || \\\$0-balance_rcv 94.9153 || \\\$0-freq_2_rcv
-8000 || \\\$0-Mix_ring_mod_rcv 42.3729 || \\\$0-decimation_rcv 40.9746
-|| \\\$0-rounding_rcv 30.8559 || \\\$0-Mix_decimator_rcv 42.3729 ||
-\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
--empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty-
-\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
--empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty-
-\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
--empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty-
-\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
--empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty-
-\; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \; -empty- \;
--empty- \; -empty- \; -empty- \; -empty- \;;
-#X msg 167 134 open;
-#X obj 43 28 inlet;
-#X connect 0 0 3 0;
-#X connect 0 1 1 0;
-#X connect 1 0 3 0;
-#X connect 2 0 3 0;
-#X connect 3 0 0 0;
-#X connect 4 0 3 0;
-#X connect 5 0 2 0;
-#X restore 405 116 pd preset;
 #X obj 309 505 dac~ 1 2;
 #X obj 301 18 adc~ 1 2;
 #X text 827 288 Parameters Automatable;
@@ -578,12 +506,11 @@
 #X connect 29 0 7 0;
 #X restore 842 354 pd get.parameters;
 #X connect 1 0 2 0;
-#X connect 2 0 6 0;
+#X connect 2 0 4 0;
 #X connect 3 0 1 0;
-#X connect 4 0 5 0;
-#X connect 7 0 3 0;
-#X connect 7 1 14 0;
-#X connect 12 0 13 0;
-#X connect 13 0 6 1;
-#X connect 14 0 12 0;
+#X connect 5 0 3 0;
+#X connect 5 1 12 0;
+#X connect 10 0 11 0;
+#X connect 11 0 4 1;
+#X connect 12 0 10 0;
 #X coords 0 -1 1 1 350 300 1 35 70;
